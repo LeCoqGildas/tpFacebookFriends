@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1100">
+  <title>tp facebook</title>
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  
+</head>
+<body onLoad="init();">
+
+<div class="container-fluid">
+  <div class="header"id="title">
+     
+  </div>
+  <div id="menu">
+    <h1 class="text-muted"> Facebook Friends </h1>   
+    <div>
+      <div class="list-group">        
+          <div class="list-group-item">Recherche par prénom: <input type="text" id="champRechercheNom" hashtag="prenom"/></div>
+          <li class="list-group-item dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Trier par <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li class="dropdown-header">Civilité</li>
+                  <li><a href="#" id="triDate">Date de naissance</a></li>
+                  <li><a href="#" id="triVille">Ville</a></li>
+                  <li><a href="#" id="triCouple">En Couple</a></li>
+                  <li><a href="#" id="triNbLivre">Nombre de livres lu</a></li>
+
+
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Communautée</li>
+                  <li><a href="#" id="triNbAmis">Nombre d'amis</a></li>
+                  <li><a href="#" id="triNbAmisCommun">Nombre d'amis en cummun</a></li>
+                  <li><a href="#" id="triActivitee">Activitée</a></li>
+                  <li><a href="#" id="triByLickes">Nombre de likes</a></li>
+              </ul>
+          </li>
+          <a href="#" id="triDeuxLangues" class="list-group-item">Parle plus de 2 langues</a>
+          <a href="#" id="groupBySchool" class="list-group-item">Grouper par ecoles</a>
+      </div>
+
+      <div class="alert alert-danger" id="infosGeneral"></div>
+    
+
+      <div name="carte" id="map" class="col-lg-4 list-group"></div>
+    </div>  
+  </div>
+  
+  
+   
+
+  <div id="contenue">
+    <div id="trombinoscope"></div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="./js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="./js/lodash.underscore.js"></script>
+<script type="text/javascript" src="./js/backbone.js"></script>
+<script type="text/javascript" src="./js/bootstrap.js"></script>
+<script type="text/javascript" src="./app/friends.js"></script>
+<script type="text/javascript" src="./js/OpenLayers-2.13.1/OpenLayers.js"></script>
+<script type="text/javascript" src="./js/carte.js"></script>
+<script type="text/javascript" src="./js/afficherSurCarte.js"></script>
+
+<script type="text/htm" id="tmpl_friend">
+<div class="col-md-6 maDiv" onClick='afficherSurCarte("<%= y %>","<%= x %>","<%= first_name %>","<%= last_name %>");'>
+  <div class="alert alert-info" id="infosPersonne">
+    <img src="<%= pic %>" class="img-thumbnail monImg" alt="image profil">
+    <div><b><%= first_name %> <%= last_name %></b> <%= birthday_date %> <i><%= city %></i></div>
+    <hr>
+    <div>(Sex:<i><%= sex %></i>) Situation:<%= couple %></i></div>
+    <div>Nombre d&apos;amis:<%= nbAmis %> Dont commun:<%= nbAmisCommun %></div>
+    <div><b>Nombre de likes:<%= nbLikes %></b></div>
+    <div>Nombre de langues:<%= nbLangues %></div>
+    <div>Ecole: <%= ecole %></div>
+    <div>Nombre de livres lu:<%= nbLivres %></div>
+  </div>
+  
+</div>
+</script>
+<script type="text/htm" id="tmpl_infos">
+<div>
+  <div id="infosGeneral">
+    <div>Nombre d&apos;hommes: <%= nbHommes %></div>
+    <div>Nombre de femmes: <%= nbFemmes %></div>
+    <div>Total Likes: <%= nbLikesTotal %></div>
+    <div>Nombre d&apos;amis affich&eacute;s: <%= nbAmisAffiche %></div>
+  </div>
+</div>
+</script>
+
+<script type="text/javascript" src="./app/model/friendModel.js"></script>
+<script type="text/javascript" src="./app/collection/friendCollection.js"></script>
+<script type="text/javascript" src="./app/view/friendView.js"></script>
+<script type="text/javascript" src="./app/view/appView.js"></script>
+
+
+<script type="text/javascript">
+var collection = new FriendCollection();
+
+var app = new AppView({
+  el:$('.container-fluid')[0],
+  collection:collection
+});
+
+collection.reset(friends);
+</script>
+
+
+
+</body>
+</html>

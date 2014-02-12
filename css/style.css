@@ -1,0 +1,46 @@
+body{
+	background-color: #51C3FA;
+	/*background: -moz-linear-gradient(#51C3FA, rgba(255, 229, 255, 0.3));
+	background: -webkit-linear-gradient(#51C3FA, rgba(255, 229, 255, 0.3));
+	background:    -moz-linear-gradient(#51C3FA, rgba(255, 229, 255, 0.3));
+	background:     -ms-linear-gradient(#51C3FA, rgba(255, 229, 255, 0.3));
+	background:      -o-linear-gradient(#51C3FA, rgba(255, 229, 255, 0.3));
+	background: 	    linear-gradient(#51C3FA, rgba(255, 229, 255, 0.3));*/
+
+}
+
+#infosPersonne:hover{
+	background: linear-gradient(to bottom,#fcf8e3 0,#f8efc0 100%);
+}
+
+.maDiv{
+	text-align:center;
+	margin-bottom:1em;
+}
+
+.monImg{
+
+	height:100px;
+}
+
+#map{
+	width:400px;
+	height:300px;
+	border-radius: 20px;
+	box-shadow: 0px 0px 18px 11px rgba(37, 37, 37, 0.84);
+	-moz-box-shadow: 0px 0px 18px 11px rgba(37, 37, 37, 0.84);
+	-webkit-box-shadow: 0px 0px 18px 11px rgba(37, 37, 37, 0.84);
+}
+
+#menu{
+	position:fixed;
+}
+
+#contenue{
+	position:relative;
+	float:right;
+	/*overflow-y:scroll;*/
+	height:100%;
+	width:70%;
+	margin-top: 25px;
+}
